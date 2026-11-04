@@ -24,54 +24,74 @@ while True:
         return int(a) - 1
     while True:
         player_chioce = int(input("** 번호를 선택하세요 : "))
-        if player_chioce < 4:
+        print()
+        if 0 < player_chioce < 4:
             break
         else:
             print("1 ~ 3을 입력해주세요")
             print()
-    print()
-    if player_chioce == 1:
-        if com_choice == 1:
-            print("비겼습니다")
-            continue
-        if com_choice == 2:
-            com_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("패배")
-        if com_choice == 3:
-            player_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("승리")
-    if player_chioce == 2:
-        if com_choice == 2:
-            print("비겼습니다")
-            continue
-        if com_choice == 3:
-            com_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("패배")
-        if com_choice == 1:
-            player_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("승리")
-    if player_chioce == 3:
-        if com_choice == 3:
-            print("비겼습니다")
-            continue
-        if com_choice == 1:
-            com_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("패배")
-        if com_choice == 2:
-            player_win += 1
-            print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
-            print()
-            print("승리")
+    def get_result(player, computer):
+        if player == computer:
+            return "무승부"
+
+        if player == 1 and computer == 3:
+            return "승리"
+        elif player == 2 and computer == 1:
+            return "승리"
+        elif player == 3 and computer == 2:
+            return "승리"
+        else:
+            return "패배"
+        
+    # if player_chioce == 1:
+    #     if com_choice == 1:
+    #         print("비겼습니다")
+    #         continue
+    #     if com_choice == 2:
+    #         com_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("패배")
+    #     if com_choice == 3:
+    #         player_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("승리")
+    # if player_chioce == 2:
+    #     if com_choice == 2:
+    #         print("비겼습니다")
+    #         continue
+    #     if com_choice == 3:
+    #         com_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("패배")
+    #     if com_choice == 1:
+    #         player_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("승리")
+    # if player_chioce == 3:
+    #     if com_choice == 3:
+    #         print("비겼습니다")
+    #         continue
+    #     if com_choice == 1:
+    #         com_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("패배")
+    #     if com_choice == 2:
+    #         player_win += 1
+    #         print(f"player: {choices[choose(player_chioce)]} vs com: {choices[choose(com_choice)]}")
+    #         print()
+    #         print("승리")
+    result = get_result(player_chioce, com_choice)
+
+    if result == "승리":
+        player_win += 1
+    elif result == "패배":
+        com_win += 1
+    print(result)
     print()
     print(f"현재 스코어 player {player_win} : {com_win} com")
     if com_win == 3 or player_win == 3:
